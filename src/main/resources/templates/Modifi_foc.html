@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="pipelineform.css">
+    
+    
+    
+    <style>
+		
+		
+		*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman';
+background-color: rgb(0, 0, 0);
+
+   
+}
+
+#progress{
+    position: relative;
+    top: 30px;
+   left: 10%;
+}
+
+.pipebutton{
+    width: 10.5%;
+    height: 100%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 50%;
+    color: white;
+}
+
+#myForms{
+    position: relative;
+}
+
+.card{
+    position: absolute;
+    top:50px;
+    width: 90%;
+    height: 500px;
+    left: 5%;
+    color: white;
+    font-size: 14px;
+}
+#card1{
+     display: block; 
+    
+}
+#card2{
+     display: none; 
+  
+}
+#card3{
+    height: 660px;
+    display: none; 
+    
+}
+.personal{
+    position: relative;
+    top: 15px;
+    text-align: center;
+    font-weight: 800;
+}
+
+.form{
+    position: relative;
+    top: 40px;
+}
+
+.form-data{
+    /* left: 8%;
+    right: 8%; */
+    margin: auto;
+}
+
+input[type="radio"]{
+    height: 12px;
+    width: 12px;
+  
+}
+.radio{
+   margin-right: 10px;
+}
+
+.next1{
+  width: 100%;
+}
+.muted{
+  opacity: 0;
+}
+
+.preview{
+    width: 100%;
+}
+.save{
+    position: relative;
+    top: -30px;
+    width: 100%;
+}
+.table{
+    position: relative;
+    top: 20px;
+}
+.personald{
+    position: relative;
+    top: 18px;
+    text-align: center;
+    font-weight: 400;
+}
+#terms
+{
+  position: relative;
+  left: 25%;
+  bottom: 40px;
+}
+	</style>
+</head>
+
+<body onload="getTab()">
+
+
+    <div class="container-fluid">
+        <div class="row">
+            
+        </div>
+<br><br>
+        <div id="myForms" class="row">
+            <div id="card1" class="card bg-dark">
+                <div class="card-body">
+                    <h4 class="personal">DETAILS DEMANDES</h4>
+                    <form class="form" action="" method="POST">
+                        <div class="row">
+                            <div class="col col-md-5 form-data">
+                                <div class="form-group">
+
+                                    <h6 id="helpId1" class="form-text">Date Demande</h6>
+                                     <input type="text" class="form-control"  
+                                        aria-describedby="helpId1" th:value="${demande.date}">
+
+                                </div>
+
+                                
+
+                               <div class="form-group">
+
+                                    <h6 id="helpId1" class="form-text">Statut</h6>
+                                    <input type="text" class="form-control"  
+                                        aria-describedby="helpId1" th:value="${demande.raison}">
+
+                                </div>
+
+                                </form>
+                                
+                                  <br>  
+                                 
+                                 
+                  <form id="viewPdfForm" th:action="@{/show_pdf}" method="post">
+    <input type="hidden" name="documentContenu" th:value="${demande.document.contenu}" />
+
+    <!-- Bouton pour visualiser le PDF -->
+    <button type="button" class="btn btn-danger next1" onclick="openPdf()" aria-describedby="helpId">Visualiser le Document</button>
+</form>
+                               
+                                  <br>   <br>   
+                                 
+								
+
+                            </div><br>   <br>   
+                            <div class="col col-md-5 form-data">
+                                <div class="form-group">
+
+                                    <h6 id="helpId2" class="form-text">CIN Citoyen</h6>
+                                    <input type="text" class="form-control"  id="cage"
+                                        aria-describedby="helpId2" placeholder=" " th:value="${citoyen.cin}">
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <h6 id="helpId2" class="form-text">Nom</h6>
+                                    <input type="text" class="form-control"  id="cage"
+                                        aria-describedby="helpId2" placeholder=" " th:value="${citoyen.nom}">
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <h6 id="helpId5" class="form-text">Prenom</h6>
+                                    <input type="text" class="form-control"  id="cmobile"
+                                        aria-describedby="helpId5" placeholder="Enter your mobile" th:value="${citoyen.prenom}">
+                         <input type="hidden" name="documentContenu" th:value="${demande.document.contenu}" />
+<br>
+                        <!-- Bouton pour visualiser le PDF -->
+                        <a type="submit" class="btn btn-danger next1"   aria-describedby="helpId" th:href="@{/modif_info(id=${citoyen.id_cit},demande=${demande.id_dmd})}" >Modifier</a>
+                                </div>
+                        </div>
+                        
+                </div>
+            </div>
+            
+
+                                 
+
+
+    <script src="pipelineform.js">
+		
+	</script>
+	
+	
+	<script>
+    function openPdf() {
+        var form = document.getElementById('viewPdfForm');
+        var formData = new FormData(form);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', form.action, true);
+        xhr.responseType = 'arraybuffer';
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                var blob = new Blob([xhr.response], { type: 'application/pdf' });
+                var fileURL = URL.createObjectURL(blob);
+
+                // Créez un lien pour ouvrir le fichier dans une nouvelle fenêtre
+                var link = document.createElement('a');
+                link.href = fileURL;
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                console.error('Erreur lors de la récupération du PDF.');
+            }
+        };
+
+        xhr.send(formData);
+    }
+</script>
+	
+</body>
+
+</html>

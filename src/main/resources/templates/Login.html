@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Day 001 Login Form</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'><link rel="stylesheet" href="login/style.css">
+<style>
+	.group {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si l'espace est insuffisant */
+}
+
+.group .label {
+    flex: 1; /* Distribue l'espace de manière égale entre les éléments label */
+    margin-right: 10px; /* Ajuste l'espacement entre le label et la saisie */
+}
+
+.group .input {
+    flex: 2; /* Distribue l'espace de manière égale entre les éléments input */
+}.group .file-input {
+    display: none; /* Masque le champ de fichier par défaut */
+}
+
+.group .label {
+    position: relative;
+    cursor: pointer;
+    padding: 10px;
+   
+    background-color: #d19a59;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.group .file-input::before {
+    content: 'Parcourir'; /* Texte du label */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+     border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.group .file-input:hover + .label {
+    background-color: #0a4c8f; /* Couleur différente au survol */
+}
+
+</style>
+</head>
+<body style="background-image: url('images/dd.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<!-- partial:index.partial.html -->
+<div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+		<div class="login-form">
+			<div class="sign-in-htm">
+				<form th:action="@{/Login}" th:object="${citoyen}" method="post">
+					<br><br><br><br>
+					
+				<div class="group">
+					
+					<input placeholder="Email" name="email" id="user" type="text" class="input">
+				</div>
+				<br>
+				<div class="group">
+					
+					<input placeholder="Password" name="password" id="pass" type="password" class="input" data-type="password">
+				</div>
+				
+				<div class="group">
+					<input type="submit" class="button" value="Sign In">
+				</div>
+				</form>
+				<div class="hr"></div>
+			
+			</div>
+			<div class="sign-up-htm">
+				<form th:action="@{/register}" th:object="${citoyen}" method="post">
+				<div class="group">
+    
+    <input id="user" name="nom" type="text" placeholder="Nom" class="input">
+    <br>
+    <input id="user" name="prenom" placeholder="Prenom" type="text" class="input">
+</div>
+				<div class="group">
+					
+					
+					<input id="user" name="cin" placeholder="CIN"type="text" class="input">
+				</div>
+				<div class="group">
+					
+					
+					<input placeholder="Etat Civil" name="etat_civil" id="user" type="text" class="input">
+				</div>
+		
+				<div class="group">
+					
+					
+					<input name="adresse" placeholder="Adresse" type="text" class="input">
+				</div>
+				<div class="group">
+    
+    <input id="user" name="email" type="email" placeholder="Email" class="input">
+    <br>
+    <input id="user" name="password" placeholder="Password" type="password" class="input">
+</div>
+				<div class="group">
+				  <select name="communeName" required>
+            <option th:each="commune : ${communes}" th:text="${commune.nom}"></option>
+        </select></div>
+        	
+				<div class="group">
+					<input type="submit" class="button" value="Sign Up">
+				</div>
+				</form>
+				
+		</div>
+	</div>
+</div>
+<!-- partial -->
+  
+</body>
+</html>

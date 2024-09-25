@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<style>
+	
+	@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap');
+
+body{
+	padding: 100px 0;
+	background: rgb(0, 0, 0);
+	width: 100%;
+	height: 100%;
+	font-size: 18px;
+	line-height: 1.5;
+	font-family: 'Roboto', sans-serif;
+	color: rgb(255, 0, 0);
+}
+.container{
+	max-width: 800px;
+	width: 100%;
+}
+
+h1{
+	font-weight: 700;
+	font-size: 45px;
+	font-family: 'Roboto', sans-serif;
+}
+
+.header{
+	margin-bottom: 80px;
+}
+#description{
+	font-size: 24px;
+}
+
+.form-wrap{
+	background: rgba(255,255,255,1);
+	width: 100%;
+	max-width: 850px;
+	padding: 50px;
+	margin: 0 auto;
+	position: relative;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.15);
+	box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.15);
+}
+.form-wrap:before{
+	content: "";
+	width: 90%;
+	height: calc(100% + 60px);
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	position: absolute;
+	top: -30px;
+	background: rgb(255, 0, 0);
+	z-index: -1;
+	opacity: 0.8;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.15);
+	box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.15);
+}
+.form-group{
+	margin-bottom: 25px;
+}
+.form-group > label{
+	display: block;
+	font-size: 18px;	
+	color: #000;
+}
+.custom-control-label{
+	color: #000;
+	font-size: 16px;
+}
+.form-control{
+	height: 50px;
+	background: #ecf0f4;
+	border-color: transparent;
+	padding: 0 15px;
+	font-size: 16px;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+.form-control:focus{
+	border-color: rgb(255, 0, 0);
+	-webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, .1);
+	-moz-box-shadow: 0px 0px 20px rgba(0, 0, 0, .1);
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, .1);
+}
+textarea.form-control{
+	height: 160px;
+	padding-top: 15px;
+	resize: none;
+}
+
+.btn{
+	padding: .657rem .75rem;
+	font-size: 18px;
+	letter-spacing: 0.050em;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: rgb(255, 0, 0);
+  border-color: #00bcd9;
+}
+
+.btn-primary:hover {
+  color: #00bcd9;
+  background-color: #ffffff;
+  border-color: #00bcd9;
+	-webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, .1);
+	-moz-box-shadow: 0px 0px 20px rgba(0, 0, 0, .1);
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, .1);
+}
+
+.btn-primary:focus, .btn-primary.focus {
+  color: #00bcd9;
+  background-color: #ffffff;
+  border-color: #00bcd9;
+  -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, .1);
+	-moz-box-shadow: 0px 0px 20px rgba(0, 0, 0, .1);
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, .1);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #00bcd9;
+  background-color: #ffffff;
+  border-color: #00bcd9;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, .1);
+	-moz-box-shadow: 0px 0px 20px rgba(0, 0, 0, .1);
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, .1);
+}
+</style>
+</head>
+<body>
+	<div class="container">
+	<header class="header">
+		<h1 id="title" class="text-center" style="">Informations Citoyen</h1>
+		<p id="description" class="text-center">
+		</p>
+	</header>
+	<div class="form-wrap">	
+		<form id="survey-form"  th:action="@{/update_info}" method="post">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label id="name-label" for="name">CIN</label>
+						<input  th:value="${citoyen.cin}" type="text" name="name" id="name" placeholder="Enter your name" class="form-control" required readonly>
+					</div> 
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label id="email-label" for="email">Nom</label>
+						<input  th:value="${citoyen.nom}" type="email" name="email" id="email" placeholder="Enter your email" class="form-control" required readonly>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label id="number-label" for="number">Prenom <small></small></label>
+						<input th:value="${citoyen.prenom}"  type="text" name="age" class="form-control" placeholder="Age" readonly>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label id="number-label" for="number"> Email<small></small></label>
+						<input th:value="${citoyen.email}" type="text" class="form-control" placeholder="Age" readonly>
+					</div>
+				</div>
+					
+			</div>
+			
+			<div class="row">
+				
+				<div class="col-md-6">
+					<div class="form-group">
+						<label id="number-label" for="number"> Etat Civil<small></small></label>
+						<input th:value="${citoyen.etat_civil}" type="text" name="etat" id="number"  class="form-control" placeholder="Etat Civil" >
+					</div>
+				</div>
+										<input th:value="${citoyen.id_cit}" type="hidden" name="id"  >
+                                        <input th:value="${demande}" type="hidden" name="id_demande"  >
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label id="number-label" for="number"> Adresse<small></small></label>
+						<input th:value="${citoyen.adresse}" type="text" name="adresse" id="number"  class="form-control" placeholder="Adresse" >
+					</div>
+				</div>
+			</div>
+
+
+					
+			<div class="row">
+				<div class="col-md-4">
+					<button type="submit" id="submit" class="btn btn-primary btn-block">Modifier</button>
+				</div>
+			</div>
+
+		</form>
+	</div>	
+</div>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reconnaissance Faciale</title>
+    <!-- Ajoutez les liens vers les dépendances nécessaires, comme Bootstrap, ici -->
+    <!-- <link rel="stylesheet" href="..."> -->
+    <!-- <script src="..."></script> -->
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Reconnaissance Faciale</h2>
+    
+    <!-- Formulaire pour capturer la photo et entrer l'ID du citoyen -->
+    <form id="reconnaissanceForm" action="capturer" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="idCitoyen" class="form-label">ID du Citoyen</label>
+        <input type="text" class="form-control" id="idCitoyen" name="idCitoyen" required>
+    </div>
+    
+    <!-- Afficher la vidéo de la caméra -->
+    <video id="video" width="400" height="300" autoplay></video>
+
+    <!-- Bouton pour capturer la photo -->
+    <button type="button" onclick="capturePhoto()" class="btn btn-primary">Capturer la photo</button>
+    
+    <!-- Champ caché pour stocker l'image capturée -->
+    <input type="hidden" id="photo" name="photo" required>
+
+    <!-- Bouton pour soumettre le formulaire -->
+    <button type="submit" class="btn btn-success mt-3">Vérifier la Reconnaissance Faciale</button>
+</form>
+</div>
+<script>
+    // Obtenir l'accès à la caméra
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function (stream) {
+            document.getElementById('video').srcObject = stream;
+        })
+        .catch(function (error) {
+            console.log("Erreur d'accès à la caméra: ", error);
+        });
+
+    // Fonction pour capturer la photo
+    function capturePhoto() {
+        console.log("Capture en cours...");
+        
+        var video = document.getElementById('video');
+        var canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        var context = canvas.getContext('2d');
+        
+        // Dessiner la photo sur le canvas
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        // Convertir le canvas en une image de données au format base64
+        var imageData = canvas.toDataURL('image/jpeg');
+
+        // Remplir le champ caché de l'image capturée
+        document.getElementById('photo').value = imageData;
+
+        console.log("Capture terminée. Image capturée:", imageData);
+    }
+</script>
+<script>alert("Bouton 'Capturer la photo' cliqué");
+</script>
+
+
+</body>
+</html>
